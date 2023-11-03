@@ -131,17 +131,17 @@ class telnet
     protected function do_div(array $args)
     {
         if (count($args) != 2) {
-            return "div [number] [number]";
+            return "error: div [number] [number]";
         }
 
         $a = (float)$args[0];
         $b = (float)$args[1];
 
         if ($a != $args[0] || $b != $args[1]) {
-            return "You must input two integer";
+            return "error: You must input two integer";
         }
         if ($b === 0) {
-            return "div can not be zero";
+            return "error: div can not be zero";
         }
 
         $ret = $a / $b;
@@ -152,11 +152,11 @@ class telnet
     protected function do_conv_tree(array $args)
     {
         if (count($args) != 1) {
-            return 'not a json';
+            return 'error: not a json';
         }
         $json = json_decode($args[0], true, JSON_INVALID_UTF8_IGNORE);
         if (!$json) {
-            return 'not a json';
+            return 'error: not a json';
         }
         $tree = [];
         $treeCur = &$tree;
@@ -165,7 +165,7 @@ class telnet
 
         foreach ($json as $v) {
             if (!is_array($v) || !isset($v['id'], $v['name'], $v['level'], $v['namePath'])) {
-                return 'unknown format';
+                return 'error: unknown format';
             }
             $paths = explode(',', $v['namePath']);
             $treeCur = &$tree;
