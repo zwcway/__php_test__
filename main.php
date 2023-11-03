@@ -83,7 +83,7 @@ class telnet
                     stream_socket_sendto($conn, "Unokwn command: $cmd\n");
                     continue;
                 }
-                $ret = call_user_func_array(array($this, $method), [$conn, $args]);
+                $ret = call_user_func_array(array($this, $method), [$args]);
                 if (is_string($ret) && strlen($ret) > 0) {
                     stream_socket_sendto($conn, "$ret\n");
                     continue;
