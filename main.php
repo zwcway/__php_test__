@@ -69,6 +69,7 @@ class telnet
                         continue;
                     }
                     $cmd = $args[0];
+                    $args = array_splice($args,1);
                     if ($cmd === 'quit' || $cmd === 'q') {
                         return;
                     }
