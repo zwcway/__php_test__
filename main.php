@@ -122,9 +122,8 @@ class telnet
         }
 
         $a = (int)$args[0];
-        $b = (int)$args[1];
 
-        $ret = $a * $b;
+        $ret = $a+1;
 
         return sprintf("%d\n", $ret);
     }
