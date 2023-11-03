@@ -149,7 +149,7 @@ class telnet
         return sprintf("%f\n", $ret);
     }
 
-    protected function do_conv_tree($conn, array $args)
+    protected function do_conv_tree(array $args)
     {
         if (count($args) != 1) {
             return 'not a json';
